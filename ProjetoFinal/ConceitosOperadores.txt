@@ -1,0 +1,69 @@
+Para manipular as variáveis, utiliza-mos operadores.
+
+Estes podem ser aritméticos, de atribuição, relacionais ou lógicos.
+
+Eles nos ajudam a verificar, dar valor a uma variável e executar operações com as mesmas
+
+#Aritméticos
+
+	Usamos operadores aritméticos para realizar contas. Somando os valores de variáveis, dividindo, multiplicando, etc.
+	Portanto, os operadores são: +, -, *, /.
+	Se a variável "a" possui o valor 4 e a variável "b" possui o valor 2:
+
+	a + b = 6
+	a - b = 2
+	a * b = 8
+	a / b = 2
+#Atribuição
+
+    Até agora, utilizamos um dos principais operadores de atribuição, para passar valores a nossas variáveis, representado pelo símbulo =
+    
+    Outros exemplos de operadores de atribuição:
+    
+    Incremental +=, onde o valor atual da variável é incrementado com o valor passado.
+    Decremental -=, onde o valor atual da variável é decrementado com o valor passado.
+    Multiplicativo *=, onde o valor atual da variável é multiplicado pelo valor passado.
+    Divisor /=, onde o valor atual da variável é dividido pelo valor passado.
+    
+    Entre outros, dependendo da linguagem de programação que estiver sendo utlilizada.
+    
+#Relacionais
+
+    Muitas vezes precisamos determinar a equivalência entre duas variáveis ou a relação de grandeza (se é maior ou menor) em
+    relaçãoà outra variável ou valor. Nessas situações, utilizamos os opera- dores relacionais. As operações realizadas com os operadores relacionais devolvem valores do tipo booleano (verdadeiro ou falso)
+    
+    Temos os operadores de:
+    
+    Igualdade ==
+    Desigaldade !=
+    Menor <
+    Maior >
+    Menor ou igual <=
+    Maior ou igual >=
+    
+#Lógicos
+
+    Para criar comparações mais complexas, onde mais de um fator é verificado, utilizamos os operadores lógicos. Obtendo um retorno do tipo booleano.
+    Os operadores lógicos são: 
+    
+    E &&
+    OU ||
+    
+#Exemplo E
+
+    O pessoal da faculdade vai fazer uma festa, para entrar você precisa entrar ser maior de idade E levar uma caixa de cerveja.
+    Portanto, a pessoa que está recepcionando, faria a verificação.
+    
+    idade >= 18 && VeioComCerveja == verdadeiro
+    
+    Caso uma ou mais verificações não sejam verdadeiras, o retorno será falso, e você não poderá entrar na festa.
+
+#Exemplo OU
+
+    Agora, digamos que os organizadores mudaram de ideia. A festa ainda é para maiores de idade, porém, você pode trazer uma caixa de cerveja ou pagar para entrar.
+    A verificação ficaria assim:
+    
+    idade >= 18 && (VeioComCerveja == verdadeiro || pagouParaEntrar == verdadeiro)
+    
+    Nesse caso, é obrigatório que a idade seja igual ou maior que 18, assim como antes, porém na segunda parte, é verificado se você satisfaz alguma das duas verificações. Se qualquer uma for verdadeira, obteremos o retorno VERDADEIRO.
+    

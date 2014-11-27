@@ -1,0 +1,61 @@
+CONDICIONAIS
+
+As estruturas condicionais são o que nos permitem ter um código mais "inteligente" e dinamico.
+Fazendo verificações e decidindo o que deve ser feito de acordo com as informações analizadas.
+
+#Por exemplo
+
+Para abrir a porta da sua casa, você precisa de uma chave.
+Para isso, temos a variável do tipo booleana chamada PossueChave.
+Com a estrutura de condicional, SE, iremos verificar.
+
+SE (PossueChave == verdadeiro){
+	escreva("Abrir a porta")
+}
+
+O resultado, "abrir a porta" somente será exibido, #caso o valor da variável possue chave seja verdadeiro.
+
+Agora, e se nós quisermos que algo acontece, caso a PossueChave seja falso?
+
+Para isso, usamos o SENAO.
+
+SE (PossueChave == verdadeiro){
+	escreva("Abrir a porta")
+}SENAO{
+	escreva("Porta trancada")
+}
+
+#Dessa forma, se a nossa variável PossueChave, for falsa, a verificação no SE é feita, porém, como a condição não é satisfeita, o que está no escopo do SENAO, é executado.
+
+MAIS CONDIÇÕES..
+
+Até agora, entendemos como funciona o SE e o SENAO. Dessa forma podemos verificar algo e fazer algo caso a nossa verificação seja satisfeita e algo caso ela não seja.
+
+Mas, e se necessitarmos impor mais condições na nossa verificação?
+
+#Vamos ao próximo exemplo!
+
+Dessa vez, vamos dizer a classificação da pessoa de acordo com sua idade. Para isso, temos uma variável inteira que iremos chamar de Idade.
+
+SE (Idade <= 14){
+	escreva("É uma criança")
+}SENAO{
+	escreva("Não é mais uma criança")
+}
+
+#Dessa forma, se a Idade for menos que 14, dizemos que a pessoa é uma criança. Caso contrário, apenas dizemos que ela já não é mais uma criança.
+Para distinguirmos entre uma adolescente e um adulto, vamos usar o SENAO SE. Onde, se a condição anterior não for satisfeita, iremos fazer outra verificação!
+Vejamos...
+
+
+#SE (Idade <= 14){
+	escreva("Você é uma criança")
+}SENAO SE(Idade <=17){
+	escreva("Vocé é um adolescente")
+}SENAO{
+	escreva(Você é um adulto)
+}
+
+Dessa forma, se a Idade for maior que 14, iremos verificar se ela se encaixa no próximo intervalo, que é até 17. Caso seja, sabemos que se trata de um adolescente, SENAO, a Idade é maior que 18 e trata-se de um adulto!
+
+
