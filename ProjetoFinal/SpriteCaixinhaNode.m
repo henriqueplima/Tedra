@@ -22,7 +22,7 @@ static const int YELLOW = 3;
         meuIndex = posicao;
         self.progressaoDuracao = progressao;
         minhaCor = [self retornaMinhaCor:posicao];
-        
+        duracaoInicial = 1.3;
         lblTipo = [[SKLabelNode alloc] initWithFontNamed:FONT_LIGHT];
         [lblTipo setText:tipo];
         [lblTipo setFontColor:[SKColor blackColor]];
@@ -59,7 +59,7 @@ static const int YELLOW = 3;
 }
 
 -(void)inicializarAnimacaoMoverX{
-    acaoMoverX = [SKAction moveByX:695 y:0 duration:1.3];
+    acaoMoverX = [SKAction moveByX:695 y:0 duration:duracaoInicial];
     [acaoMoverX setTimingMode:SKActionTimingEaseOut];
     duracaoAtual = [acaoMoverX duration];
 }
@@ -103,12 +103,12 @@ static const int YELLOW = 3;
     //ESTA CONDIÇÃO É USADA PARA QUE APENAS 1 CAIXA AVISE O DELEGATE QUE A ANIMAÇÃO TERMINOU
     if (meuIndex == 3) {
         [self runAction:acaoMoverX completion:^{
-    
+            
             
             [self removeAllActions];
             [[self myDelegate] animacaoMoverCaixaFinalizado:resposta];
         }];
-    
+        
     }else{
         [self runAction:acaoMoverX];
     }
@@ -119,7 +119,7 @@ static const int YELLOW = 3;
 -(void)diminuirAnimacaoDuracao{
     
     duracaoAtual -= self.progressaoDuracao;
-
+    
     [self definirNovaDuracaoAnimacao:duracaoAtual];
 }
 
@@ -137,7 +137,7 @@ static const int YELLOW = 3;
     
     if (duracao < 0.6) {
         duracao = 0.6;
-    
+        
     }else if(duracao > 2){
         duracao = 2;
     }
@@ -182,6 +182,10 @@ static const int YELLOW = 3;
         default:
             return @"Erro";
     }
+}
+
+-(void)resetarValores{
+    [acaoMoverX setDuration:duracaoInicial];
 }
 
 @end

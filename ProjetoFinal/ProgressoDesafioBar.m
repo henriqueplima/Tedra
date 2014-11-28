@@ -12,7 +12,7 @@
 
 
 -(id)initWithBolinhas:(int)nBolinhas{
-   
+    
     self = [super init];
     
     if (self) {
@@ -20,7 +20,7 @@
         [self inicializarVariaveisContadoras];
         somAcerto = [SKAction playSoundFileNamed:@"correto.aiff" waitForCompletion:NO];
         somErro = [SKAction playSoundFileNamed:@"errado.wav" waitForCompletion:NO];
-    
+        
     }
     return self;
 }
@@ -29,7 +29,7 @@
     bolinhas = [[NSMutableArray alloc] init];
     CGFloat posY = 0;
     CGFloat posX = 17;
-
+    
     for (int i=0; i<nBolinhas; i++) {
         [bolinhas addObject:[[SKSpriteNode alloc] initWithImageNamed:@"Desafio-Andamento-Vazio.png"]];
         [[bolinhas objectAtIndex:i]setPosition:CGPointMake(posX, posY)];
@@ -85,7 +85,7 @@
     if(posAtual == (bolinhas.count - 1)){
         [[self myDelegate] progressBarCompletado];
         return NO;
-    
+        
     }else if(posAtual >= bolinhas.count){
         return YES;
     }

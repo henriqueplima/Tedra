@@ -112,7 +112,7 @@
 }
 
 
--(void)exibirTempoTotal:(NSString*)tempoTotal corTexto:(UIColor*)cor{
+-(void)exibirTempoTotal:(NSString*)tempoTotal{
     
     UILabel *labelTempo = [[UILabel alloc] init];
     [labelTempo setText:tempoTotal];
@@ -139,7 +139,7 @@
     [labelSegundos setTextColor:[UIColor whiteColor]];
     requiredSize = [@"segundos" sizeWithAttributes: @{NSFontAttributeName: labelSegundos.font}];
     
-
+    
     frameTempo.size.width = requiredSize.width;
     frameTempo.size.height = requiredSize.height + 5;
     frameTempo.origin.x = (self.frame.size.width - frameTempo.size.width) / 2;
@@ -161,5 +161,10 @@
     labelInseridas = YES;
     
     
+}
+
+
+-(void)removerDelegate{
+    self.layer.myDelegate = nil;
 }
 @end

@@ -42,13 +42,13 @@
         [nodeCronometro setMyDelegate:self];
         [self addChild:nodeCronometro];
         
-        progresso = [[ProgressoDesafioBar alloc] initWithBolinhas:1];
-        [progresso setMyDelegate:self];
+        nodeProgresso = [[ProgressoDesafioBar alloc] initWithBolinhas:2];
+        [nodeProgresso setMyDelegate:self];
         CGPoint posicao;
-        posicao.y = self.size.height - progresso.size.height;
-        posicao.x = (self.size.width / 2) - (progresso.size.width / 2);
-        [progresso setPosition:posicao];
-        [self addChild:progresso];
+        posicao.y = self.size.height - nodeProgresso.size.height;
+        posicao.x = (self.size.width / 2) - (nodeProgresso.size.width / 2);
+        [nodeProgresso setPosition:posicao];
+        [self addChild:nodeProgresso];
         
         
         [self iniciarAnimacaoFundo];
@@ -122,10 +122,10 @@
 
 -(void)mudarProgresso:(BOOL)resposta{
     if (resposta) {
-        [progresso insereAcerto];
-    
+        [nodeProgresso insereAcerto];
+        
     }else{
-        [progresso insereErro];
+        [nodeProgresso insereErro];
     }
 }
 
@@ -163,14 +163,25 @@
 -(void)rodadaAtualTerminou{
     if (fimDesafio) {
         NSLog(@"Acabou o desafio!");
-        NSLog(@"Acertos: %d - Erros: %d", [progresso getNAcertos], [progresso getNErros]);
+        NSLog(@"Acertos: %d - Erros: %d", [nodeProgresso getNAcertos], [nodeProgresso getNErros]);
         
-        [[self myDelegate] exibirDadosEstatisticos:[nodeCronometro getVetorTempos] nAcertos:[progresso getNAcertos] nErros:[progresso getNErros]];
+        [[self myDelegate] exibirDadosEstatisticos:[nodeCronometro getVetorTempos] nAcertos:[nodeProgresso getNAcertos] nErros:[nodeProgresso getNErros]];
         return;
     }
     [nodeEsteira modificarTipoDasCaixas];
     [nodeEsteira posicionarCaixasParaDesafio];
     
+}
+
+
+-(void)reiniciarDesafio{
+    fimDesafio = NO;
+    [nodeCronometro resetarDados];
+    [nodeEsteira resetarValores];
+    [nodeProgresso reset];
+    
+    [nodeEsteira modificarTipoDasCaixas];
+    [nodeEsteira posicionarCaixasParaDesafio];
 }
 
 -(void)tempoEsgotado{
@@ -180,7 +191,7 @@
     [nodeEsteira iniciarAnimacaoMoverEsteira];
     [nodeCronometro usuarioErrouResposta];
     
-    [progresso insereErro];
+    [nodeProgresso insereErro];
 }
 
 

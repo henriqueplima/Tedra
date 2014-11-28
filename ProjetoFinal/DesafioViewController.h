@@ -15,6 +15,7 @@
 @interface DesafioViewController : UIViewController <UIPageViewControllerDataSource, DesafioSceneDelegate>
 
 {
+    EstatisticaViewController *estatisticas;
     GerenciadorDesafios *gerenciadorDesafios;
     Gerador *gerador;
     SKView *viewDesafioAtual;

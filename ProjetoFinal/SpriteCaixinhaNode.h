@@ -20,9 +20,9 @@
 {
     SKLabelNode *lblTipo;
     int meuIndex, nAcertos, nErros;
-    float progressaoDuracaoDinamica, duracaoAtual;
+    float progressaoDuracaoDinamica, duracaoAtual, duracaoInicial;
     NSString *minhaCor;
-
+    
     SKAction *acaoMoverX;
     SKAction *acaoPular;
     SKAction *acaoEncherCaixa;
@@ -38,4 +38,5 @@
 -(void)resetarTextura;
 -(void)diminuirAnimacaoDuracao;
 -(void)aumentarDuracaoAnimacao;
+-(void)resetarValores;
 @end

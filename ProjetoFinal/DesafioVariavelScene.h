@@ -24,7 +24,7 @@
     SpriteVisorNode *nodeVisor;
     SpriteEsteiraNode *nodeEsteira;
     SpriteCronometroNode *nodeCronometro;
-    ProgressoDesafioBar *progresso;
+    ProgressoDesafioBar *nodeProgresso;
 }
 
 @end

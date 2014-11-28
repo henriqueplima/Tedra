@@ -18,4 +18,6 @@
 
 @property id <DesafioSceneDelegate> myDelegate;
 
+-(void)reiniciarDesafio;
+
 @end

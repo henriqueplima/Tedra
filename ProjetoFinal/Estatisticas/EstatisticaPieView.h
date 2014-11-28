@@ -20,5 +20,6 @@
 @property(nonatomic,readonly,retain) PieLayer *layer;
 
 
--(void)exibirTempoTotal:(NSString*)tempoTotal corTexto:(UIColor*)cor;
+-(void)exibirTempoTotal:(NSString*)tempoTotal;
+-(void)removerDelegate;
 @end

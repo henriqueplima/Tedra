@@ -69,6 +69,11 @@
 }
 
 
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    
+}
+
 -(void)viewWillAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
@@ -88,13 +93,13 @@
     self.pageController.dataSource = self;
     [[self.pageController view] setFrame:CGRectMake(0, 100, 768, 600)];
     
-    EstatisticaViewController *initialViewController = [self viewControllerAtIndex:0];
-    initialViewController.vtTempos = tempos;
-    initialViewController.nAcertos = nAcertos;
+    estatisticas = [self viewControllerAtIndex:0];
+    estatisticas.vtTempos = tempos;
+    estatisticas.nAcertos = nAcertos;
     
     
     
-    NSArray *viewControllers = [NSArray arrayWithObject:initialViewController];
+    NSArray *viewControllers = [NSArray arrayWithObject:estatisticas];
     
     
     [self.pageController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
@@ -128,13 +133,79 @@
     float posX = (self.view.frame.size.width - width) / 2;
     [txtDesempenho setFrame:CGRectMake(posX, 50, width, 88)];
     [self.blurView addSubview:txtDesempenho];
+    
+    
+    //LABEL MENSAGEM AO USUÁRIO
+    UILabel *txtMensagem = [[UILabel alloc] init];
+    [txtMensagem setText:@"Incrível! Incrível como você é horrível, seu bosta!"];
+    [txtMensagem setFont:[UIFont fontWithName:FONT_LIGHT size:35]];
+    [txtMensagem setTextColor:[UIColor whiteColor]];
+    CGSize requiredSize = [txtMensagem.text sizeWithAttributes: @{NSFontAttributeName: txtMensagem.font}];
+    posX = (self.view.frame.size.width - requiredSize.width) / 2;
+    [txtMensagem setFrame:CGRectMake(posX, 770, requiredSize.width, requiredSize.height+5)];
+    [self.blurView addSubview:txtMensagem];
+    
+    
+    CGRect frameBotoes;
+    frameBotoes.size.width = 383;
+    frameBotoes.size.height = 100;
+    frameBotoes.origin.x = 0;
+    
+    frameBotoes.origin.y = self.view.frame.size.height - frameBotoes.size.height;
+    [self inserirBotao:@"outros desafios" frame:frameBotoes seletor:@selector(botaoMenuPrincipalClicado:)];
+    
+    
+    frameBotoes.origin.x = self.view.frame.size.width - frameBotoes.size.width;
+    [self inserirBotao:@"reiniciar" frame:frameBotoes seletor:@selector(botaoReiniciarClicado:)];
+    
+}
+
+-(void)inserirBotao:(NSString*)texto frame:(CGRect)frame seletor:(SEL)selector{
+    UIButton *botaoMenu = [[UIButton alloc] initWithFrame:frame];
+    [botaoMenu setTitle:texto forState:UIControlStateNormal];
+    
+    [botaoMenu.titleLabel setFont:[UIFont fontWithName:FONT_LIGHT size:30]];
+    
+    [botaoMenu.titleLabel setTextAlignment:NSTextAlignmentCenter];
+    [botaoMenu setBackgroundColor:[UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:0.7]];
+    [botaoMenu setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [botaoMenu addTarget:self action:selector forControlEvents:UIControlEventTouchDown];
+    [self.blurView addSubview:botaoMenu];
+}
+
+
+-(IBAction)botaoMenuPrincipalClicado:(id)sender{
+    NSLog(@"menu principal");
+    
+    [self limparView];
+    [self voltar:nil];
+}
+
+-(IBAction)botaoReiniciarClicado:(id)sender{
+    NSLog(@"reiniciar");
+    [self limparView];
+    
+    [cenaAtual reiniciarDesafio];
+}
+
+
+-(void)limparView{
+    [estatisticas finalizarEstatisticas];
+    estatisticas = nil;
+    
+    [self.pageController removeFromParentViewController];
+    [self.pageController.view removeFromSuperview];
+    self.pageController.dataSource = nil;
+    self.pageController = nil;
+    [self.blurView removeFromSuperview];
+    self.blurView = nil;
 }
 
 - (EstatisticaViewController *)viewControllerAtIndex:(NSUInteger)index {
     
-    EstatisticaViewController *childViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"dadosEstatisticos"];
-    [childViewController setIndex:index];
-    return childViewController;
+    estatisticas = [self.storyboard instantiateViewControllerWithIdentifier:@"dadosEstatisticos"];
+    [estatisticas setIndex:index];
+    return estatisticas;
 }
 
 
@@ -160,10 +231,10 @@
     
     index++;
     
-//    if(index == [imagens count]){
-//        
-//    }
-//    
+    //    if(index == [imagens count]){
+    //
+    //    }
+    //
     if (index == 1) {
         //return nil;
     }

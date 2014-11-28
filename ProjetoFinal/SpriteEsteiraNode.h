@@ -26,7 +26,7 @@
     
     NSMutableArray *vtCaixas;
     NSMutableArray *vtTiposVariavel;
-
+    
     BOOL esteiraLevantada, ultimoResultado;
 }
 
@@ -39,4 +39,5 @@
 -(void)habilitarToqueNasCaixas:(BOOL)resultado;
 -(void)modificarTipoDasCaixas;
 -(void)iniciarAnimacaoDeEntrada;
+-(void)resetarValores;
 @end

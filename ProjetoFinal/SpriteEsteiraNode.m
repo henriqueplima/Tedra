@@ -50,7 +50,7 @@
         
         [vtCaixas addObject:caixa];
         [nodeEsteira addChild:caixa];
-
+        
     }
 }
 
@@ -90,7 +90,7 @@
             [c diminuirAnimacaoDuracao];
             
         }
-    
+        
     }else{
         for (SpriteCaixinhaNode *c in vtCaixas) {
             [c aumentarDuracaoAnimacao];
@@ -124,7 +124,7 @@
 
 -(void)iniciarAnimacaoFimDaRodada{
     int posicaoFinal = 710;
-
+    
     //ANIMAÇÃO QUE MOVE AS CAIXAS PARA QUE ELAS SAIAM DA TELA
     for (SpriteCaixinhaNode *c in vtCaixas) {
         
@@ -136,7 +136,7 @@
 
 -(void)posicionarCaixasParaDesafio{
     int posicaoFinal = 695;
-
+    
     //ANIMAÇÃO QUE MOVE AS CAIXAS PARA QUE ELAS APAREÇAM NA TELA
     for (SpriteCaixinhaNode *c in vtCaixas) {
         
@@ -152,7 +152,7 @@
         [self resetarTexturasDasCaixas];
         [self posicionarCaixasInicialmente];
         [[self myDelegate] rodadaAtualTerminou];
-    
+        
     }else{
         [[self myDelegate] caixasPosicionadasParaDesafio];
     }
@@ -260,5 +260,11 @@
     }
 }
 
+
+-(void)resetarValores{
+    for(SpriteCaixinhaNode *c in vtCaixas){
+        [c resetarValores];
+    }
+}
 
 @end

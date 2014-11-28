@@ -10,4 +10,8 @@
 
 @implementation DesafioScene
 
+-(void)reiniciarDesafio{
+    
+}
+
 @end
